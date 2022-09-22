@@ -1,12 +1,18 @@
-import express, { RequestHandler } from "express";
-import { getGraphQLParameters, processRequest, renderGraphiQL, shouldRenderGraphiQL, sendResult } from "graphql-helix";
-import schema from "./graphql";
+import express, { RequestHandler } from 'express';
+import {
+  getGraphQLParameters,
+  processRequest,
+  renderGraphiQL,
+  shouldRenderGraphiQL,
+  sendResult,
+} from 'graphql-helix';
+import schema from './graphql';
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/graphql", async (req, res) => {
+app.use('/graphql', async (req, res) => {
   // Create a generic Request object that can be consumed by Graphql Helix's API
   const request = {
     body: req.body,
