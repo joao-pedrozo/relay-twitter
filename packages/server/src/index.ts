@@ -7,6 +7,7 @@ import {
   sendResult,
 } from 'graphql-helix';
 import schema from './graphql';
+import { connectToMongo } from './mongo';
 
 const app = express();
 
@@ -48,6 +49,8 @@ app.use('/graphql', async (req, res) => {
 });
 
 const port = process.env.PORT || 4000;
+
+connectToMongo();
 
 app.listen(port, () => {
   console.log(`GraphQL server is running on port ${port}.`);
